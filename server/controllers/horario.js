@@ -34,7 +34,8 @@ module.exports = {
                     console.log(horarios)
                     //validacion de la asigacion de horario
                     if (horarios.length > 0) {
-                        console.log('No esta disponible ese horario!')
+                        console.log('No esta disponible ese horario!');
+                        return res.status(400);
                     }
                     //validado
                     else {
@@ -56,11 +57,9 @@ module.exports = {
 
                 });
 
-            
-
         }
         else {
-            console.log('La hora de incio debe ser menor a la hora de fin del horario')
+           return res.status(400)
         }
 
     },
