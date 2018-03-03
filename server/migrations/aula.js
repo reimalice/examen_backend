@@ -13,7 +13,7 @@ module.exports = (sequelize, DataType) => {
    
   });
   aula.associate = function (models) {
-    aula.hasMany(models.horario, {foreignKey: 'id_aula', as: 'horario'});
+    aula.hasaMany(models.horario, {foreignKey: 'id_aula', as: 'horario'});
   };
   
   return aula;

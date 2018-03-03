@@ -1,4 +1,5 @@
 const materia = require('../models').materia;
+const docente = require('../models').docente;
 module.exports = {
 
     create(req, res) {
@@ -14,7 +15,12 @@ module.exports = {
     
     list(req, res) {
         return materia
-          .findAll()
+          .findAll({
+            include: [{
+                model: docente,
+                as: 'docente',
+              }]
+          })
           .then(materia => res.status(200).send(materia))
           .catch(error => res.status(400).send(error));
     },

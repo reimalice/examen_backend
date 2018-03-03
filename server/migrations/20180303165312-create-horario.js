@@ -1,26 +1,41 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('materia', {
+    return queryInterface.createTable('horarios', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      sigla: {
+      dia: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      descripcion: {
-        type: Sequelize.STRING,
+      hora_inicio: {
+        type: Sequelize.TIME,
         allowNull: false
       },
-      id_docente: {
+
+      hora_fin: {
+        type: Sequelize.TIME,
+        allowNull: false
+      },
+      id_materia: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'docentes',
+          model: 'materia',
+          key: 'id'
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
+      },
+      id_aula: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'aulas',
           key: 'id'
         },
         onUpdate: 'cascade',
@@ -37,6 +52,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('materia');
+    return queryInterface.dropTable('horarios');
   }
 };

@@ -1,5 +1,7 @@
 const docenteController = require('../controllers').docente;
 const materiaController = require('../controllers').materia;
+const aulaController = require('../controllers').aula;
+const horarioController = require('../controllers').horario;
 
 module.exports = (app) => {
 
@@ -202,5 +204,18 @@ app.post('/api/v1/docentes', docenteController.create);
   
   */
   app.post('/api/v1/materias', materiaController.create);
+
+
+
+
+  app.get('/api/v1/aulas', aulaController.list);
+
+
+  app.post('/api/v1/aulas', aulaController.create);
+
+
+  app.get('/api/v1/horarios', horarioController.list);
+
+  app.post('/api/v1/horarios', horarioController.create);
 
 };
